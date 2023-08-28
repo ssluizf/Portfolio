@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply bg-black scroll-m-0 snap-y snap-mandatory;
+    @apply bg-black scroll-m-0 snap-y snap-mandatory scroll-smooth;
   }
 }
 

@@ -14,28 +14,11 @@ const config: Config = {
       transparent: "transparent",
       current: "currentColor",
       black: "#131313",
+      "dark-gray": "#1E1E1E",
       white: "#FFFFFF",
       green: "#29B51E",
       "dark-green": "#209021",
     },
-    extend: {
-      keyframes: {
-        "glitch-hover": {
-          "2%, 64%": {
-            transform: "translate(2px, 0) skew(0deg)"
-          },
-          "4%, 60%": {
-            transform: "translate(-2px, 0) skew(0deg)"
-          },
-          "62%": {
-            transform: "translate(0, 0) skew(5deg)"
-          }
-        }
-      },
-      animation: {
-        "glitch-hover": "glitch-hover"
-      }
-    }
   },
   plugins: [],
 }
