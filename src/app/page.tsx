@@ -1,4 +1,7 @@
 import Link from "next/link"
+import Image from "next/image"
+
+import login from "@/assets/images/Login.png"
 
 import Icon from "@/components/atoms/Icon"
 import Glitch from "@/components/atoms/Glitch"
@@ -30,16 +33,26 @@ export default function Home() {
             </Glitch>
           </div>
           <div className="flex flex-col items-center my-auto text-white font-roboto overflow-hidden">
-            <Glitch playMode="always" specialMode="scroll">
-              <p className="font-medium text-6xl leading-snug w-min whitespace-nowrap">
-                Hello, My name is Luiz
-              </p>
-            </Glitch>
-            <Glitch playMode="always" specialMode="scroll">
-              <p className="text-4xl leading-snug w-min whitespace-nowrap">
-                {"I'm a Front End Developer"}
-              </p>
-            </Glitch>
+            <p className="font-medium text-6xl leading-snug w-min whitespace-nowrap">
+              <Glitch playMode="always" specialMode="scroll">
+                <span>Hello,</span>
+              </Glitch>
+              <span> My name </span>
+              <Glitch playMode="always" specialMode="scroll">
+                <span>is</span>
+              </Glitch>
+              <span> Luiz</span>
+            </p>
+            <p className="text-4xl leading-snug w-min whitespace-nowrap">
+              <span>{"I'm a "}</span>
+              <Glitch playMode="always" specialMode="scroll">
+                <span>Front</span>
+              </Glitch>
+              <span> End </span>
+              <Glitch playMode="always" specialMode="scroll">
+                <span> Developer</span>
+              </Glitch>
+            </p>
           </div>
         </div>
         <div className="h-[25vh]"></div>
@@ -53,11 +66,35 @@ export default function Home() {
       <div className="h-[25vh] overflow-hidden bg-dark-gray">
         <BinaryLayer color="dark-green" />
       </div>
-      <div className="h-screen bg-dark-gray snap-start">
-        <div className="container mx-auto">
-          <p className="text-white font-medium text-6xl leading-snug w-min whitespace-nowrap">
-            Projects
-          </p>
+      <div className="flex flex-col h-screen container mx-auto px-28 py-8 bg-dark-gray snap-start">
+        <p className="text-white font-medium text-5xl w-min pb-16 whitespace-nowrap">
+          Case Studies
+        </p>
+        <div className="h-3/5 grid grid-cols-3 grid-rows-1 gap-8">
+          <div className="relative">
+            <Glitch>
+              <Link
+                className="bg-black rounded-full p-2 -m-4 absolute top-0 right-0 text-white hover:text-green -rotate-45"
+                href="https://github.com/ssluizf/Artificium"
+                target="_blank"
+              >
+                <Icon name="link" className="h-8 w-8" />
+              </Link>
+            </Glitch>
+            <div className="h-min grid grid-flow-row auto-rows-min gap-4 overflow-hidden bg-black rounded-lg pb-8">
+              <Image
+                className="bg-dark-gray h-44 object-cover object-top cursor-pointer"
+                alt="Banner Image"
+                src={login}
+              />
+              <p className="text-white font-medium text-lg mx-6">
+                Projeto Artificium
+              </p>
+              <p className="text-white text-sm mx-6">
+                {`Site built in Next.js 13 for studies over techs as Cypress and Storybook`}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

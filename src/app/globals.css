@@ -9,6 +9,10 @@
 }
 
 @layer components {
+  .inherit {
+    display: inherit;
+  }
+
   .icon--large {
     @apply h-8 w-8;
   }

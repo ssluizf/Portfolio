@@ -13,6 +13,7 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
     "dark-green": "text-dark-green",
   }
 
+  const MAX_NUMBER_OF_LINES = 20
   const glitchRef = useRef<HTMLDivElement | null>(null)
   const [binaryLength, setBinaryLength] = useState(0)
   const [hydrated, setHydrated] = useState(false)
@@ -31,6 +32,40 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
 
     return result
   }, [binaryLength])
+
+  const binaryList = useMemo(() => {
+    const currentRef = glitchRef.current
+
+    if (currentRef) {
+      const height = currentRef.getBoundingClientRect().height
+      const windowHeight = window.innerHeight
+
+      const proportionHeight = height / windowHeight
+      const currNumberOfLines = Math.round(
+        proportionHeight * MAX_NUMBER_OF_LINES,
+      )
+
+      const lineLength = binaryLength / currNumberOfLines
+
+      let binaryList = []
+
+      for (let i = 0; i < currNumberOfLines; i++) {
+        binaryList[i] = binaryText.slice(lineLength * i, lineLength * (i + 1))
+      }
+
+      binaryList = binaryList.map((line) => {
+        const separateText = line.match(/[^2]+2?|2/g) || []
+
+        return separateText
+      })
+
+      binaryList = binaryList.flat()
+
+      return binaryList
+    }
+
+    return []
+  }, [binaryText, binaryLength])
 
   const handleWindowResize = useCallback(() => {
     const currentRef = glitchRef.current
@@ -67,21 +102,18 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
   }, [handleWindowResize])
 
   if (!hydrated) return null
-
+  
   return (
-    <Glitch
-      ref={glitchRef}
-      playMode="manual"
-      specialMode="random"
-      hideOverflow={true}
-    >
-      <div className="overflow-hidden">
-        <span
-          className={`w-min align-middle my-auto ${colorClasses[color]} text-4xl break-words leading-[5vh]`}
-        >
-          {binaryText}
-        </span>
-      </div>
-    </Glitch>
+    <div className="h-[inherit] overflow-hidden" ref={glitchRef}>
+      {binaryList.map((value, index) => (
+        <Glitch key={`binary-${index}`} playMode="manual" specialMode="random">
+          <span
+            className={`${colorClasses[color]} align-middle w-full text-4xl break-words break-all leading-[4.5vh] select-none`}
+          >
+            {value}
+          </span>
+        </Glitch>
+      ))}
+    </div>
   )
 }

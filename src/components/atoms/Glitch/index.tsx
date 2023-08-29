@@ -1,26 +1,24 @@
 "use client"
 
-import React, { LegacyRef, forwardRef, useEffect } from "react"
+import React, { useEffect } from "react"
 import { useGlitch } from "react-powerglitch"
 
 type GlitchProps = {
   children: React.ReactNode
+  display?: "auto" | "block"
   specialMode?: "scroll" | "random"
   playMode?: "always" | "hover" | "click" | "manual"
   hideOverflow?: boolean
   glitchTimeSpan?: false | {}
 }
 
-const Glitch = forwardRef(function Glitch(
-  {
-    children,
-    playMode = "hover",
-    specialMode,
-    hideOverflow = false,
-    glitchTimeSpan = false,
-  }: GlitchProps,
-  ref: LegacyRef<HTMLDivElement> | null,
-) {
+export default function Glitch({
+  children,
+  playMode = "hover",
+  specialMode,
+  hideOverflow = false,
+  glitchTimeSpan = false,
+}: GlitchProps) {
   const { startGlitch, stopGlitch, ...glitch } = useGlitch({
     playMode,
     hideOverflow,
@@ -44,20 +42,18 @@ const Glitch = forwardRef(function Glitch(
       const scrollTop = document.documentElement.scrollTop
 
       if (scrollTop > lastScrollTop) {
-        if (timer !== null) {
-          clearTimeout(timer)
-        } else {
+        if (timer === null) {
           startGlitch()
         }
+
+        timer = setTimeout(function () {
+          stopGlitch()
+
+          timer = null
+        }, 1000)
       }
 
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop
-
-      timer = setTimeout(function () {
-        stopGlitch()
-
-        timer = null
-      }, 150)
     }
 
     if (specialMode === "scroll") {
@@ -74,11 +70,14 @@ const Glitch = forwardRef(function Glitch(
 
     function activateGlithOnRandom() {
       if (timer === null) {
-        timer = setTimeout(() => {
-          startGlitch()
+        timer = setTimeout(
+          () => {
+            startGlitch()
 
-          timer = null
-        }, getRandomArbitrary(1000, 10000))
+            timer = null
+          },
+          getRandomArbitrary(1000, 10000),
+        )
       }
     }
 
@@ -87,15 +86,9 @@ const Glitch = forwardRef(function Glitch(
     }
   }, [specialMode, startGlitch])
 
-  return (
-    <div ref={ref} className="h-[inherit]">
-      {React.Children.map(children, (child: any) =>
-        React.cloneElement(child, {
-          ref: glitch.ref,
-        }),
-      )}
-    </div>
+  return React.Children.map(children, (child: any) =>
+    React.cloneElement(child, {
+      ref: glitch.ref,
+    }),
   )
-})
-
-export default Glitch
+}
