@@ -1,11 +1,11 @@
 import Link from "next/link"
-import Image from "next/image"
 
 import login from "@/assets/images/Login.png"
-
+import home from "@/assets/images/Home.png"
 import Icon from "@/components/atoms/Icon"
 import Glitch from "@/components/atoms/Glitch"
 import BinaryLayer from "@/components/molecules/BinaryLayer"
+import Card from "@/components/molecules/Card"
 
 export default function Home() {
   return (
@@ -108,39 +108,68 @@ export default function Home() {
             <span>01100200110101</span>
           </p>
         </div>
-        <div className="flex flex-col h-screen container mx-auto px-28 py-8">
+        <div
+          className="flex flex-col h-screen container mx-auto px-28 py-8"
+          id="case-studies"
+        >
           <p className="text-white font-medium text-5xl w-min pb-16 whitespace-nowrap z-10">
             Case Studies
           </p>
           <div className="h-3/5 grid grid-cols-3 grid-rows-1 gap-8">
-            <div className="relative">
-              <Glitch>
-                <Link
-                  className="bg-black rounded-full p-2 -m-4 absolute top-0 right-0 text-white hover:text-green -rotate-45"
-                  href="https://github.com/ssluizf/Artificium"
-                  target="_blank"
-                >
-                  <Icon name="link" className="h-8 w-8" />
-                </Link>
-              </Glitch>
-              <div className="h-min grid grid-flow-row auto-rows-min gap-4 overflow-hidden bg-black rounded-lg pb-8">
-                <Image
-                  className="bg-dark-gray h-44 object-cover object-top cursor-pointer"
-                  alt="Banner Image"
-                  src={login}
-                />
-                <p className="text-white font-medium text-lg mx-6">
-                  Projeto Artificium
-                </p>
-                <p className="text-white text-sm mx-6">
-                  {`Site built in Next.js 13 for studies over techs as Cypress and Storybook`}
-                </p>
-              </div>
-            </div>
+            <Card
+              title="Portfolio"
+              description="This site is built in Next.js 13 and uses a library named powerglitch for glitch animations"
+              imageURL={home}
+              link=""
+            />
+            <Card
+              title="Projeto Artificium"
+              description="Site built in Next.js 13 for studies over techs as Cypress and Storybook"
+              imageURL={login}
+              link="https://github.com/ssluizf/Artificium"
+            />
           </div>
         </div>
       </div>
-      <div className="bg-black h-72 container bottom-0 snap-end"></div>
+      <div className="grid grid-cols-3 auto-rows-auto h-72 container bg-black mx-auto px-28 pt-8 pb-6 bottom-0 snap-end">
+        <div className="grid h-min gap-4">
+          <p className="text-dark-green font-bold">MENU</p>
+          <Link className="w-min" href="/">
+            <p className="text-white whitespace-nowrap">Home</p>
+          </Link>
+          <Link className="w-min" href="/#case-studies">
+            <p className="text-white whitespace-nowrap">Case Studies</p>
+          </Link>
+          <Link className="w-min" href="/#skills">
+            <p className="text-white whitespace-nowrap">Skills</p>
+          </Link>
+        </div>
+        <div className="grid h-min gap-4">
+          <p className="text-dark-green font-bold">Redes Sociais</p>
+          <Link
+            className="w-min"
+            href="https://www.linkedin.com/in/ssluizf/"
+            target="_blank"
+          >
+            <p className="text-white whitespace-nowrap">Linkedin</p>
+          </Link>
+          <Link
+            className="w-min"
+            href="https://www.instagram.com/ssluizf/"
+            target="_blank"
+          >
+            <p className="text-white whitespace-nowrap">Instagram</p>
+          </Link>
+        </div>
+        <div className="grid h-min gap-4">
+          <p className="text-dark-green font-bold">Contato</p>
+          <p className="text-white whitespace-nowrap">ssl_log@outlook.com</p>
+          <p className="text-white whitespace-nowrap">+55 11 96476 2156</p>
+        </div>
+        <p className="text-white text-center col-span-3 mt-auto">
+          Made with 💚 by ssluizf
+        </p>
+      </div>
     </div>
   )
 }
