@@ -93,22 +93,14 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
     }
   }, [handleWindowResize, hydrated])
 
-  useEffect(() => {
-    window.addEventListener("resize", handleWindowResize)
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize)
-    }
-  }, [handleWindowResize])
-
   if (!hydrated) return null
   
   return (
-    <div className="h-[inherit] overflow-hidden" ref={glitchRef}>
+    <div className="flex flex-wrap items-stretch justify-around h-[inherit] my-auto overflow-hidden" ref={glitchRef}>
       {binaryList.map((value, index) => (
         <Glitch key={`binary-${index}`} playMode="manual" specialMode="random">
           <span
-            className={`${colorClasses[color]} align-middle w-full text-4xl break-words break-all leading-[4.5vh] select-none`}
+            className={`${colorClasses[color]} align-middle w-full text-4xl leading-none break-words break-all select-none`}
           >
             {value}
           </span>

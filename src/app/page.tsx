@@ -66,37 +66,81 @@ export default function Home() {
       <div className="h-[25vh] overflow-hidden bg-dark-gray">
         <BinaryLayer color="dark-green" />
       </div>
-      <div className="flex flex-col h-screen container mx-auto px-28 py-8 bg-dark-gray snap-start">
-        <p className="text-white font-medium text-5xl w-min pb-16 whitespace-nowrap">
-          Case Studies
-        </p>
-        <div className="h-3/5 grid grid-cols-3 grid-rows-1 gap-8">
-          <div className="relative">
-            <Glitch>
-              <Link
-                className="bg-black rounded-full p-2 -m-4 absolute top-0 right-0 text-white hover:text-green -rotate-45"
-                href="https://github.com/ssluizf/Artificium"
-                target="_blank"
-              >
-                <Icon name="link" className="h-8 w-8" />
-              </Link>
-            </Glitch>
-            <div className="h-min grid grid-flow-row auto-rows-min gap-4 overflow-hidden bg-black rounded-lg pb-8">
-              <Image
-                className="bg-dark-gray h-44 object-cover object-top cursor-pointer"
-                alt="Banner Image"
-                src={login}
-              />
-              <p className="text-white font-medium text-lg mx-6">
-                Projeto Artificium
-              </p>
-              <p className="text-white text-sm mx-6">
-                {`Site built in Next.js 13 for studies over techs as Cypress and Storybook`}
-              </p>
+      <div className="relative bg-dark-gray snap-start">
+        <div className="flex w-full absolute z-0">
+          <p className="ml-10 text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>11</span>
+          </p>
+          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>0110</span>
+          </p>
+          <p className="mr-auto text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>0</span>
+          </p>
+          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>1000111210120011</span>
+          </p>
+          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>1000111110</span>
+          </p>
+          <p className="mr-96 text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>1111001</span>
+          </p>
+          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>100011121012</span>
+          </p>
+          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>1000111</span>
+          </p>
+          <p className="mr-96 text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>1111002110011100</span>
+          </p>
+          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>011</span>
+          </p>
+          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>0112</span>
+          </p>
+          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>0101112</span>
+          </p>
+          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+            <span>01100200110101</span>
+          </p>
+        </div>
+        <div className="flex flex-col h-screen container mx-auto px-28 py-8">
+          <p className="text-white font-medium text-5xl w-min pb-16 whitespace-nowrap z-10">
+            Case Studies
+          </p>
+          <div className="h-3/5 grid grid-cols-3 grid-rows-1 gap-8">
+            <div className="relative">
+              <Glitch>
+                <Link
+                  className="bg-black rounded-full p-2 -m-4 absolute top-0 right-0 text-white hover:text-green -rotate-45"
+                  href="https://github.com/ssluizf/Artificium"
+                  target="_blank"
+                >
+                  <Icon name="link" className="h-8 w-8" />
+                </Link>
+              </Glitch>
+              <div className="h-min grid grid-flow-row auto-rows-min gap-4 overflow-hidden bg-black rounded-lg pb-8">
+                <Image
+                  className="bg-dark-gray h-44 object-cover object-top cursor-pointer"
+                  alt="Banner Image"
+                  src={login}
+                />
+                <p className="text-white font-medium text-lg mx-6">
+                  Projeto Artificium
+                </p>
+                <p className="text-white text-sm mx-6">
+                  {`Site built in Next.js 13 for studies over techs as Cypress and Storybook`}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div className="bg-black h-72 container bottom-0 snap-end"></div>
     </div>
   )
 }
