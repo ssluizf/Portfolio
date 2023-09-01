@@ -120,7 +120,7 @@ export default function Home() {
               title="Portfolio"
               description="This site is built in Next.js 13 and uses a library named powerglitch for glitch animations"
               imageURL={home}
-              link=""
+              link="https://github.com/ssluizf/Portfolio"
             />
             <Card
               title="Projeto Artificium"
