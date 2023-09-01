@@ -12,14 +12,14 @@ export default function Home() {
     <div className="h-screen snap-start">
       <div className="relative snap-end">
         <div className="container mx-auto introduction-banner flex flex-col w-full h-screen sticky top-0">
-          <div className="absolute flex items-center space-x-8 mr-8 mt-8 text-white self-end">
+          <div className="absolute flex items-center space-x-4 mr-4 mt-4 md:space-x-8 md:mr-8 md:mt-8 text-white self-end">
             <Glitch>
               <Link
                 title="linkedin"
                 href="https://www.linkedin.com/in/ssluizf/"
                 target="_blank"
               >
-                <Icon name="linkedin" className="h-8 w-8" />
+                <Icon name="linkedin" className="h-6 w-6 md:h-8 md:w-8" />
               </Link>
             </Glitch>
             <Glitch>
@@ -28,12 +28,12 @@ export default function Home() {
                 href="https://github.com/ssluizf"
                 target="_blank"
               >
-                <Icon name="code" className="h-10 w-10" />
+                <Icon name="code" className="h-8 w-8 md:h-10 md:w-10" />
               </Link>
             </Glitch>
           </div>
           <div className="flex flex-col items-center my-auto text-white font-roboto overflow-hidden">
-            <p className="font-medium text-6xl leading-snug w-min whitespace-nowrap">
+            <p className="font-medium text-2xl md:text-6xl leading-snug w-min whitespace-nowrap">
               <Glitch playMode="always" specialMode="scroll">
                 <span>Hello,</span>
               </Glitch>
@@ -43,7 +43,7 @@ export default function Home() {
               </Glitch>
               <span> Luiz</span>
             </p>
-            <p className="text-4xl leading-snug w-min whitespace-nowrap">
+            <p className="text-md md:text-4xl leading-snug w-min whitespace-nowrap">
               <span>{"I'm a "}</span>
               <Glitch playMode="always" specialMode="scroll">
                 <span>Front</span>
@@ -67,55 +67,55 @@ export default function Home() {
         <BinaryLayer color="dark-green" />
       </div>
       <div className="relative bg-dark-gray snap-start">
-        <div className="flex w-full absolute z-0">
-          <p className="ml-10 text-dark-green w-min text-4xl leading-none break-all select-none">
+        <div className="flex w-full absolute z-0 text-dark-green text-4xl leading-none break-all select-none">
+          <p className="hidden xs:inline ml-10">
             <span>11</span>
           </p>
-          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="hidden xs:inline text-dark-green w-min">
             <span>0110</span>
           </p>
-          <p className="mr-auto text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="hidden xs:inline mr-auto text-dark-green w-min">
             <span>0</span>
           </p>
-          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="hidden lg:inline text-dark-green w-min">
             <span>1000111210120011</span>
           </p>
-          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="hidden lg:inline text-dark-green w-min">
             <span>1000111110</span>
           </p>
-          <p className="mr-96 text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="hidden lg:inline mr-52 xl:mr-96 text-dark-green w-min">
             <span>1111001</span>
           </p>
-          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="hidden sm:inline text-dark-green w-min">
             <span>100011121012</span>
           </p>
-          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="hidden sm:inline text-dark-green w-min">
             <span>1000111</span>
           </p>
-          <p className="mr-96 text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="hidden sm:inline mr-52 xl:mr-96 text-dark-green w-min">
             <span>1111002110011100</span>
           </p>
-          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="ml-auto text-dark-green w-min">
             <span>011</span>
           </p>
-          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="text-dark-green w-min">
             <span>0112</span>
           </p>
-          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="text-dark-green w-min">
             <span>0101112</span>
           </p>
-          <p className="text-dark-green w-min text-4xl leading-none break-all select-none">
+          <p className="text-dark-green w-min">
             <span>01100200110101</span>
           </p>
         </div>
         <div
-          className="flex flex-col h-screen container mx-auto px-28 py-8"
+          className="flex flex-col min:h-screen container mx-auto px-8 md:px-28 py-8"
           id="case-studies"
         >
-          <p className="text-white font-medium text-5xl w-min pb-16 whitespace-nowrap z-10">
+          <p className="text-white font-medium text-2xl md:text-5xl w-min pb-8 md:pb-16 whitespace-nowrap z-10">
             Case Studies
           </p>
-          <div className="h-3/5 grid grid-cols-3 grid-rows-1 gap-8">
+          <div className="h-auto grid grid-rows-2 grid-cols-1 lg:h-3/5 lg:grid-cols-2 xl:grid-cols-3 gap-8">
             <Card
               title="Portfolio"
               description="This site is built in Next.js 13 and uses a library named powerglitch for glitch animations"
@@ -131,7 +131,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 auto-rows-auto h-72 container bg-black mx-auto px-28 pt-8 pb-6 bottom-0 snap-end">
+      <div className="grid gap-y-4 md:grid-cols-3 auto-rows-auto md:h-72 container bg-black mx-auto px-8 md:px-28 pt-8 pb-6 bottom-0 snap-end">
         <div className="grid h-min gap-4">
           <p className="text-dark-green font-bold">MENU</p>
           <Link className="w-min" href="/">
@@ -166,7 +166,7 @@ export default function Home() {
           <p className="text-white whitespace-nowrap">ssl_log@outlook.com</p>
           <p className="text-white whitespace-nowrap">+55 11 96476 2156</p>
         </div>
-        <p className="text-white text-center col-span-3 mt-auto">
+        <p className="text-white text-center mt-4 md:col-span-3 md:mt-auto">
           Made with 💚 by ssluizf
         </p>
       </div>

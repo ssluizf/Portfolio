@@ -20,7 +20,7 @@ export default function Card({ title, description, imageURL = "", link = "" }: C
           href={link}
           target="_blank"
         >
-          <Icon name="link" className="h-8 w-8" />
+          <Icon name="link" className="h-6 w-6 md:h-8 md:w-8" />
         </Link>
       </Glitch>
       <div className="h-min grid grid-flow-row auto-rows-min gap-4 overflow-hidden bg-black rounded-lg pb-8">
@@ -29,10 +29,10 @@ export default function Card({ title, description, imageURL = "", link = "" }: C
           alt="Card Image"
           src={imageURL}
         />
-        <p className="text-white font-medium text-lg mx-6">
+        <p className="text-white font-medium text-md md:text-lg mx-6">
           {title}
         </p>
-        <p className="text-white text-sm mx-6">
+        <p className="text-white text-xs md:text-sm mx-6">
           {description}
         </p>
       </div>

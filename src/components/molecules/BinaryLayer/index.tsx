@@ -75,11 +75,15 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
       const height = currentRef.getBoundingClientRect().height
 
       const windowHeight = window.innerHeight
+      const CHAR_LENGTH = 19.41
 
       const proportionHeight = height / windowHeight
-      const proportionValue = 1.027777777777778
+      const currNumberOfLines = Math.round(proportionHeight * MAX_NUMBER_OF_LINES)
+      const lineLength = Math.trunc(width / CHAR_LENGTH)
 
-      setBinaryLength(Math.trunc(width * proportionValue * proportionHeight))
+      const calc = Math.trunc(currNumberOfLines * lineLength)
+
+      setBinaryLength(calc)
     }
   }, [])
 
@@ -94,13 +98,16 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
   }, [handleWindowResize, hydrated])
 
   if (!hydrated) return null
-  
+
   return (
-    <div className="flex flex-wrap items-stretch justify-around h-[inherit] my-auto overflow-hidden" ref={glitchRef}>
+    <div
+      className="flex flex-wrap items-stretch justify-between h-[inherit] my-auto overflow-hidden"
+      ref={glitchRef}
+    >
       {binaryList.map((value, index) => (
         <Glitch key={`binary-${index}`} playMode="manual" specialMode="random">
           <span
-            className={`${colorClasses[color]} align-middle w-full text-4xl leading-none break-words break-all select-none`}
+            className={`${colorClasses[color]} align-middle text-justify w-full text-4xl leading-none break-words break-all select-none`}
           >
             {value}
           </span>
