@@ -14,6 +14,7 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
   }
 
   const MAX_NUMBER_OF_LINES = 20
+  const CHAR_LENGTH = 20.23
   const glitchRef = useRef<HTMLDivElement | null>(null)
   const [binaryLength, setBinaryLength] = useState(0)
   const [hydrated, setHydrated] = useState(false)
@@ -37,15 +38,16 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
     const currentRef = glitchRef.current
 
     if (currentRef) {
+      const width = currentRef.getBoundingClientRect().width
       const height = currentRef.getBoundingClientRect().height
       const windowHeight = window.innerHeight
 
       const proportionHeight = height / windowHeight
-      const currNumberOfLines = Math.round(
+      const currNumberOfLines = Math.trunc(
         proportionHeight * MAX_NUMBER_OF_LINES,
       )
 
-      const lineLength = binaryLength / currNumberOfLines
+      const lineLength = Math.trunc(width / CHAR_LENGTH)
 
       let binaryList = []
 
@@ -65,9 +67,9 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
     }
 
     return []
-  }, [binaryText, binaryLength])
+  }, [binaryText])
 
-  const handleWindowResize = useCallback(() => {
+  const handleWindowResize = useCallback(async () => {
     const currentRef = glitchRef.current
 
     if (currentRef) {
@@ -75,10 +77,12 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
       const height = currentRef.getBoundingClientRect().height
 
       const windowHeight = window.innerHeight
-      const CHAR_LENGTH = 19.41
 
       const proportionHeight = height / windowHeight
-      const currNumberOfLines = Math.round(proportionHeight * MAX_NUMBER_OF_LINES)
+      const currNumberOfLines = Math.trunc(
+        proportionHeight * MAX_NUMBER_OF_LINES,
+      )
+
       const lineLength = Math.trunc(width / CHAR_LENGTH)
 
       const calc = Math.trunc(currNumberOfLines * lineLength)
@@ -107,7 +111,7 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
       {binaryList.map((value, index) => (
         <Glitch key={`binary-${index}`} playMode="manual" specialMode="random">
           <span
-            className={`${colorClasses[color]} align-middle text-justify w-full text-4xl leading-none break-words break-all select-none`}
+            className={`${colorClasses[color]} font-roboto align-middle text-justify w-full text-4xl leading-none break-words break-all select-none`}
           >
             {value}
           </span>

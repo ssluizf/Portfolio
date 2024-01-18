@@ -1,13 +1,29 @@
 import Link from "next/link"
 
-import login from "@/assets/images/Login.png"
-import home from "@/assets/images/Home.png"
+import { homepage, projects } from "@/mocks/home"
+
 import Icon from "@/components/atoms/Icon"
 import Glitch from "@/components/atoms/Glitch"
 import BinaryLayer from "@/components/molecules/BinaryLayer"
 import Card from "@/components/molecules/Card"
 
 export default function Home() {
+  const {
+    titleFragments,
+    subtitleFragments,
+    caseStudiesTitle,
+    menuTitle,
+    homeTitle,
+    skillsTitle,
+    socialTitle,
+    linkedinTitle,
+    instagramTitle,
+    madeByTitle,
+    contactTitle,
+    emailTitle,
+    phoneTitle,
+  } = homepage
+
   return (
     <div className="h-screen snap-start">
       <div className="relative snap-end">
@@ -35,22 +51,22 @@ export default function Home() {
           <div className="flex flex-col items-center my-auto text-white font-roboto overflow-hidden">
             <p className="font-medium text-2xl md:text-6xl leading-snug w-min whitespace-nowrap">
               <Glitch playMode="always" specialMode="scroll">
-                <span>Hello,</span>
+                <span>{titleFragments[0]}</span>
               </Glitch>
-              <span> My name </span>
+              <span>{titleFragments[1]}</span>
               <Glitch playMode="always" specialMode="scroll">
-                <span>is</span>
+                <span>{titleFragments[2]}</span>
               </Glitch>
-              <span> Luiz</span>
+              <span>{titleFragments[3]}</span>
             </p>
             <p className="text-md md:text-4xl leading-snug w-min whitespace-nowrap">
-              <span>{"I'm a "}</span>
+              <span>{subtitleFragments[0]}</span>
               <Glitch playMode="always" specialMode="scroll">
-                <span>Front</span>
+                <span>{subtitleFragments[1]}</span>
               </Glitch>
-              <span> End </span>
+              <span>{subtitleFragments[2]}</span>
               <Glitch playMode="always" specialMode="scroll">
-                <span> Developer</span>
+                <span>{subtitleFragments[3]}</span>
               </Glitch>
             </p>
           </div>
@@ -113,61 +129,58 @@ export default function Home() {
           id="case-studies"
         >
           <p className="text-white font-medium text-2xl md:text-5xl w-min pb-8 md:pb-16 whitespace-nowrap z-10">
-            Case Studies
+            {caseStudiesTitle}
           </p>
           <div className="h-auto grid grid-rows-2 grid-cols-1 lg:h-3/5 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            <Card
-              title="Portfolio"
-              description="This site is built in Next.js 13 and uses a library named powerglitch for glitch animations"
-              imageURL={home}
-              link="https://github.com/ssluizf/Portfolio"
-            />
-            <Card
-              title="Projeto Artificium"
-              description="Site built in Next.js 13 for studies over techs as Cypress and Storybook"
-              imageURL={login}
-              link="https://github.com/ssluizf/Artificium"
-            />
+            {projects.map(({ title, description, imageURL, link }, index) => (
+              <Card
+                key={`card-${index}`}
+                title={title}
+                description={description}
+                imageURL={imageURL}
+                link={link}
+              />
+            ))}
           </div>
         </div>
       </div>
       <div className="grid gap-y-4 md:grid-cols-3 auto-rows-auto md:h-72 container bg-black mx-auto px-8 md:px-28 pt-8 pb-6 bottom-0 snap-end">
         <div className="grid h-min gap-4">
-          <p className="text-dark-green font-bold">MENU</p>
+          <p className="text-dark-green font-bold">{menuTitle}</p>
           <Link className="w-min" href="/">
-            <p className="text-white whitespace-nowrap">Home</p>
+            <p className="text-white whitespace-nowrap">{homeTitle}</p>
           </Link>
           <Link className="w-min" href="/#case-studies">
-            <p className="text-white whitespace-nowrap">Case Studies</p>
+            <p className="text-white whitespace-nowrap">{caseStudiesTitle}</p>
           </Link>
           <Link className="w-min" href="/#skills">
-            <p className="text-white whitespace-nowrap">Skills</p>
+            <p className="text-white whitespace-nowrap">{skillsTitle}</p>
           </Link>
         </div>
         <div className="grid h-min gap-4">
-          <p className="text-dark-green font-bold">Redes Sociais</p>
+          <p className="text-dark-green font-bold">{socialTitle}</p>
           <Link
             className="w-min"
             href="https://www.linkedin.com/in/ssluizf/"
             target="_blank"
           >
-            <p className="text-white whitespace-nowrap">Linkedin</p>
+            <p className="text-white whitespace-nowrap">{linkedinTitle}</p>
           </Link>
           <Link
             className="w-min"
             href="https://www.instagram.com/ssluizf/"
             target="_blank"
           >
-            <p className="text-white whitespace-nowrap">Instagram</p>
+            <p className="text-white whitespace-nowrap">{instagramTitle}</p>
           </Link>
         </div>
         <div className="grid h-min gap-4">
-          <p className="text-dark-green font-bold">Contato</p>
-          <p className="text-white whitespace-nowrap">ssl_log@outlook.com</p>
-          <p className="text-white whitespace-nowrap">+55 11 96476 2156</p>
+          <p className="text-dark-green font-bold">{contactTitle}</p>
+          <p className="text-white whitespace-nowrap">{emailTitle}</p>
+          <p className="text-white whitespace-nowrap">{phoneTitle}</p>
         </div>
         <p className="text-white text-center mt-4 md:col-span-3 md:mt-auto">
-          Made with 💚 by ssluizf
+          {madeByTitle}
         </p>
       </div>
     </div>
