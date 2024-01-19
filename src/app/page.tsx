@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <div className="h-screen snap-start">
       <div className="relative snap-end">
-        <div className="container mx-auto introduction-banner flex flex-col w-full h-screen sticky top-0">
+        <div className="container mx-auto introduction-banner flex flex-col w-full h-[80vh] md:h-screen sticky top-0">
           <div className="absolute flex items-center space-x-4 mr-4 mt-4 md:space-x-8 md:mr-8 md:mt-8 text-white self-end">
             <Glitch>
               <Link
@@ -48,10 +48,10 @@ export default function Home() {
               </Link>
             </Glitch>
           </div>
-          <div className="flex flex-col items-center my-auto text-white font-roboto overflow-hidden">
-            <p className="font-medium text-2xl md:text-6xl leading-snug w-min whitespace-nowrap">
+          <div className="flex flex-col items-start w-min ml-8 mt-44 md:items-center md:mx-auto md:my-auto text-white font-roboto overflow-hidden">
+            <p className="font-medium text-4xl md:text-6xl leading-snug w-min whitespace-nowrap">
               <Glitch playMode="always" specialMode="scroll">
-                <span>{titleFragments[0]}</span>
+                <span className="block md:inline">{titleFragments[0]}</span>
               </Glitch>
               <span>{titleFragments[1]}</span>
               <Glitch playMode="always" specialMode="scroll">
@@ -59,7 +59,7 @@ export default function Home() {
               </Glitch>
               <span>{titleFragments[3]}</span>
             </p>
-            <p className="text-md md:text-4xl leading-snug w-min whitespace-nowrap">
+            <p className="text-xl md:text-4xl leading-normal w-min whitespace-nowrap">
               <span>{subtitleFragments[0]}</span>
               <Glitch playMode="always" specialMode="scroll">
                 <span>{subtitleFragments[1]}</span>
@@ -71,7 +71,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="h-[25vh]"></div>
+        <div className="h-[25vh] md:h-[25vh]"></div>
         <div className="h-[25vh] overflow-hidden">
           <BinaryLayer color="dark-green" />
         </div>
