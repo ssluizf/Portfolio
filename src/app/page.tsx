@@ -5,7 +5,7 @@ import { homepage, projects } from "@/mocks/home"
 import Icon from "@/components/atoms/Icon"
 import Glitch from "@/components/atoms/Glitch"
 import BinaryLayer from "@/components/molecules/BinaryLayer"
-import Card from "@/components/molecules/Card"
+import CardWithModal from "@/components/organisms/CardWithModal"
 
 export default function Home() {
   const {
@@ -25,8 +25,8 @@ export default function Home() {
   } = homepage
 
   return (
-    <div className="h-screen snap-start">
-      <div className="relative snap-end">
+    <div className="h-screen lg:snap-start">
+      <div className="relative lg:snap-end">
         <div className="container mx-auto introduction-banner flex flex-col w-full h-[80vh] md:h-screen sticky top-0">
           <div className="absolute flex items-center space-x-4 mr-4 mt-4 md:space-x-8 md:mr-8 md:mt-8 text-white self-end">
             <Glitch>
@@ -76,13 +76,13 @@ export default function Home() {
           <BinaryLayer color="dark-green" />
         </div>
       </div>
-      <div className="h-[50vh] overflow-hidden bg-gradient-to-b from-black to-dark-gray snap-center">
+      <div className="h-[50vh] overflow-hidden bg-gradient-to-b from-black to-dark-gray lg:snap-center">
         <BinaryLayer color="green" />
       </div>
       <div className="h-[25vh] overflow-hidden bg-dark-gray">
         <BinaryLayer color="dark-green" />
       </div>
-      <div className="relative bg-dark-gray snap-start">
+      <div className="relative bg-dark-gray lg:snap-start">
         <div className="flex w-full absolute z-0 text-dark-green text-4xl leading-none break-all select-none">
           <p className="hidden xs:inline ml-10">
             <span>11</span>
@@ -131,20 +131,14 @@ export default function Home() {
           <p className="text-white font-medium text-2xl md:text-5xl w-min pb-8 md:pb-16 whitespace-nowrap z-10">
             {caseStudiesTitle}
           </p>
-          <div className="h-auto grid grid-rows-2 grid-cols-1 lg:h-3/5 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {projects.map(({ title, description, imageURL, link }, index) => (
-              <Card
-                key={`card-${index}`}
-                title={title}
-                description={description}
-                imageURL={imageURL}
-                link={link}
-              />
+          <div className="h-auto grid grid-rows-2 grid-cols-1 lg:h-3/5 lg:grid-cols-2 xl:grid-cols-3 gap-12">
+            {projects.map((project, index) => (
+              <CardWithModal key={`card-${index}`} {...project} />
             ))}
           </div>
         </div>
       </div>
-      <div className="grid gap-y-4 md:grid-cols-3 auto-rows-auto md:h-72 container bg-black mx-auto px-8 md:px-28 pt-8 pb-6 bottom-0 snap-end">
+      <div className="grid gap-y-4 md:grid-cols-3 auto-rows-auto md:h-72 container bg-black mx-auto px-8 md:px-28 pt-8 pb-6 bottom-0 lg:snap-end">
         <div className="grid h-min gap-4">
           <p className="text-dark-green font-bold">{menuTitle}</p>
           <Link className="w-min" href="/">

@@ -7,11 +7,12 @@ import Icon from "@/components/atoms/Icon";
 type CardProps = {
   title: string,
   description: string,
+  onClick?: () => any,
   imageURL?: StaticImageData | string
   link?: string
 }
 
-export default function Card({ title, description, imageURL = "", link = "" }: CardProps) {
+export default function Card({ title, description, onClick, imageURL = "", link = "" }: CardProps) {
   return (
     <div className="relative">
       <Glitch>
@@ -27,6 +28,7 @@ export default function Card({ title, description, imageURL = "", link = "" }: C
         <Image
           className="bg-dark-gray h-44 object-cover object-top cursor-pointer"
           alt="Card Image"
+          onClick={onClick}
           src={imageURL}
         />
         <p className="text-white font-medium text-md md:text-lg mx-6">

@@ -14,7 +14,7 @@ export const homepage = {
   contactTitle: "Contato",
   emailTitle: "ssl_log@outlook.com",
   phoneTitle: "+55 11 96476 2156",
-  madeByTitle: "Made with 💚 by ssluizf"
+  madeByTitle: "Made with 💚 by ssluizf",
 }
 
 export const projects = [
@@ -24,6 +24,21 @@ export const projects = [
       "This site is built in Next.js 13 and uses a library named powerglitch for glitch animations",
     imageURL: home,
     link: "https://github.com/ssluizf/Portfolio",
+    links: [
+      {
+        link: "https://github.com/ssluizf/Portfolio",
+        label: "Repository",
+      },
+      {
+        link: "https://github.com/ssluizf/Portfolio",
+        label: "Site",
+      },
+      {
+        link: "https://github.com/ssluizf/Portfolio",
+        label: "Post",
+      },
+    ],
+    skills: ["React", "Next.js"],
   },
   {
     title: "Projeto Artificium",
@@ -31,5 +46,20 @@ export const projects = [
       "Site built in Next.js 13 for studies over techs as Cypress and Storybook",
     imageURL: login,
     link: "https://github.com/ssluizf/Artificium",
+    links: [
+      {
+        link: "https://github.com/ssluizf/Portfolio",
+        label: "Repository",
+      },
+      {
+        link: "https://github.com/ssluizf/Portfolio",
+        label: "Site",
+      },
+      {
+        link: "https://github.com/ssluizf/Portfolio",
+        label: "Post",
+      },
+    ],
+    skills: ["React", "Next.js", "Firebase"],
   },
 ]
