@@ -8,13 +8,14 @@ type BinaryLayerProps = {
 }
 
 export default function BinaryLayer({ color }: BinaryLayerProps) {
+  const MAX_NUMBER_OF_LINES = 20
+  const CHAR_LENGTH = 20.23
+  
   const colorClasses: any = {
     green: "text-green",
     "dark-green": "text-dark-green",
   }
 
-  const MAX_NUMBER_OF_LINES = 20
-  const CHAR_LENGTH = 20.23
   const glitchRef = useRef<HTMLDivElement | null>(null)
   const [binaryLength, setBinaryLength] = useState(0)
   const [hydrated, setHydrated] = useState(false)
@@ -109,7 +110,7 @@ export default function BinaryLayer({ color }: BinaryLayerProps) {
       ref={glitchRef}
     >
       {binaryList.map((value, index) => (
-        <Glitch key={`binary-${index}`} playMode="manual" specialMode="random">
+        <Glitch key={`binary-${index}`} mode="scroll" timeFunc="random">
           <span
             className={`${colorClasses[color]} font-roboto align-middle text-justify w-full text-4xl leading-none break-words break-all select-none`}
           >

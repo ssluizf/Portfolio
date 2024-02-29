@@ -30,12 +30,8 @@ export const projects = [
         label: "Repository",
       },
       {
-        link: "https://github.com/ssluizf/Portfolio",
+        link: "https://portfolio-ssluizf.vercel.app/",
         label: "Site",
-      },
-      {
-        link: "https://github.com/ssluizf/Portfolio",
-        label: "Post",
       },
     ],
     skills: ["React", "Next.js"],
@@ -48,15 +44,15 @@ export const projects = [
     link: "https://github.com/ssluizf/Artificium",
     links: [
       {
-        link: "https://github.com/ssluizf/Portfolio",
+        link: "https://github.com/ssluizf/Artificium",
         label: "Repository",
       },
       {
-        link: "https://github.com/ssluizf/Portfolio",
+        link: "https://artificium-cyan.vercel.app/",
         label: "Site",
       },
       {
-        link: "https://github.com/ssluizf/Portfolio",
+        link: "https://www.linkedin.com/feed/update/urn:li:activity:7085364631044562944/",
         label: "Post",
       },
     ],

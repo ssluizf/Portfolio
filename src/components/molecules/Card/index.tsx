@@ -7,7 +7,7 @@ import Icon from "@/components/atoms/Icon";
 type CardProps = {
   title: string,
   description: string,
-  onClick?: () => any,
+  onClick?: (e?: any) => any,
   imageURL?: StaticImageData | string
   link?: string
 }

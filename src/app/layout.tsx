@@ -1,6 +1,6 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Roboto } from 'next/font/google'
+import "./globals.css"
+import type { Metadata } from "next"
+import { Roboto } from "next/font/google"
 
 const baseFont = Roboto({
   subsets: ["latin"],
@@ -10,8 +10,8 @@ const baseFont = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: 'Luiz - Portfolio',
-  description: 'Welcome to my portfolio page',
+  title: "Luiz - Portfolio",
+  description: "Welcome to my portfolio page",
 }
 
 export default function RootLayout({
@@ -21,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={baseFont.variable}>{children}</body>
+      <body className={baseFont.variable} suppressHydrationWarning={true}>
+        {children}
+      </body>
     </html>
   )
 }

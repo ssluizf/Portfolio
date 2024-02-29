@@ -5,22 +5,26 @@ import { useGlitch } from "react-powerglitch"
 
 type GlitchProps = {
   children: React.ReactNode
-  display?: "auto" | "block"
-  specialMode?: "scroll" | "random"
-  playMode?: "always" | "hover" | "click" | "manual"
+  mode?: "hover" | "scroll" | "scrollDown"
+  timeFunc?: "random"
   hideOverflow?: boolean
   glitchTimeSpan?: false | {}
 }
 
 export default function Glitch({
   children,
-  playMode = "hover",
-  specialMode,
+  mode = "hover",
+  timeFunc,
   hideOverflow = false,
   glitchTimeSpan = false,
 }: GlitchProps) {
+  const playModeCustomProps: any = {
+    scroll: "manual",
+    scrollDown: "always",
+  }
+
   const { startGlitch, stopGlitch, ...glitch } = useGlitch({
-    playMode,
+    playMode: playModeCustomProps[mode] || mode,
     hideOverflow,
     glitchTimeSpan,
     slice: {
@@ -29,62 +33,82 @@ export default function Glitch({
   })
 
   useEffect(() => {
-    if (specialMode === "scroll") {
+    if (mode === "scrollDown") {
       stopGlitch()
     }
-  }, [specialMode, stopGlitch])
+  }, [mode, stopGlitch])
 
   useEffect(() => {
-    let timer: any = null
+    let startTimer: any = null
+    let stopTimer: any = null
     let lastScrollTop: number = 0
-
-    function activateGlitchOnDownscroll() {
-      const scrollTop = document.documentElement.scrollTop
-
-      if (scrollTop > lastScrollTop) {
-        if (timer === null) {
-          startGlitch()
-        }
-
-        timer = setTimeout(function () {
-          stopGlitch()
-
-          timer = null
-        }, 1000)
-      }
-
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop
-    }
-
-    if (specialMode === "scroll") {
-      window.addEventListener("scroll", activateGlitchOnDownscroll, false)
-    }
-  }, [specialMode, startGlitch, stopGlitch])
-
-  useEffect(() => {
-    let timer: any = null
 
     function getRandomArbitrary(min: number, max: number) {
       return Math.random() * (max - min) + min
     }
 
-    function activateGlithOnRandom() {
-      if (timer === null) {
-        timer = setTimeout(
-          () => {
-            startGlitch()
+    function clearTimers() {
+      startTimer = null
+      stopTimer = null
+    }
 
-            timer = null
-          },
-          getRandomArbitrary(1000, 10000),
-        )
+    function startGlitchOnTime(time: number) {
+      if (startTimer === null) {
+        startTimer = setTimeout(() => {
+          startGlitch()
+        }, time)
       }
     }
 
-    if (specialMode === "random") {
-      document.addEventListener("scroll", activateGlithOnRandom)
+    function stopGlitchOnTime(time: number) {
+      if (stopTimer === null) {
+        stopTimer = setTimeout(() => {
+          stopGlitch()
+          clearTimers()
+        }, time)
+      }
     }
-  }, [specialMode, startGlitch])
+
+    function doAnimation() {
+      const randomTime = getRandomArbitrary(1000, 10000)
+      
+      const startTime = timeFunc !== "random" ? 0 : randomTime
+      const stopTime = startTime + 1000
+
+      startGlitchOnTime(startTime)
+      stopGlitchOnTime(stopTime)
+    }
+
+    function animateOnScroll() {
+      doAnimation()
+    }
+
+    function animateOnScrollDown() {
+      const scrollTop = document.documentElement.scrollTop
+      const isScrollingDown = scrollTop > lastScrollTop
+
+      if (isScrollingDown) {
+        doAnimation()
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop
+    }
+
+    function activateGlitchOnScroll() {
+      switch (mode) {
+        case "scroll": {
+          animateOnScroll()
+          break
+        }
+        case "scrollDown": {
+          animateOnScrollDown()
+          break
+        }
+      }
+    }
+
+    window.addEventListener("scroll", activateGlitchOnScroll, false)
+  }, [mode, timeFunc, startGlitch, stopGlitch])
 
   return React.Children.map(children, (child: any) =>
     React.cloneElement(child, {

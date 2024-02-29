@@ -10,8 +10,8 @@ type CardModalProps = {
   title: string
   description: string
   imageURL?: StaticImageData | string
-  links: { link: string; label: string }[]
-  skills: string[]
+  links?: { label: string; link: string }[]
+  skills?: string[]
 }
 
 export default function CardModal({
@@ -20,8 +20,8 @@ export default function CardModal({
   title,
   description,
   imageURL = "",
-  links,
-  skills,
+  links = [],
+  skills = [],
 }: CardModalProps) {
   return open ? (
     <div
@@ -48,7 +48,7 @@ export default function CardModal({
               src={imageURL}
             />
             <div className="w-1/3 p-4 pt-12 space-y-3">
-              {links.map(({ link, label }, index) => (
+              {links.map(({ label, link }, index) => (
                 <Link
                   key={`link-${index}`}
                   className="flex justify-between gap-2 bg-black rounded-full p-0 text-white hover:text-green"
