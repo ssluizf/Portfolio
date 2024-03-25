@@ -7,15 +7,17 @@ import Card from "@/components/molecules/Card"
 import CardModal from "@/components/molecules/CardModal"
 
 type CardWithModalProps = {
+  id: number
   title: string
   description: string
-  imageURL?: StaticImageData | string
+  imageURL?: string
   link?: string
   links: { link: string; label: string }[]
   skills: string[]
 }
 
 export default function CardWithModal({
+  id,
   title,
   description,
   imageURL,
@@ -23,13 +25,14 @@ export default function CardWithModal({
   links,
   skills
 }: CardWithModalProps) {
-  const [openModal, setOpenModal] = useState(false)
+  const [selectedId, setSelectedId] = useState<string>()
 
   return (
     <>
       <CardModal
-        open={openModal}
-        onClose={() => setOpenModal(false)}
+        layoutId={selectedId}
+        open={Boolean(selectedId)}
+        onClose={() => setSelectedId(undefined)}
         title={title}
         description={description}
         imageURL={imageURL}
@@ -37,11 +40,12 @@ export default function CardWithModal({
         skills={skills}
       />
       <Card
+        layoutId={id.toString()}
         title={title}
         description={description}
         imageURL={imageURL}
         link={link}
-        onClick={() => setOpenModal(true)}
+        onClick={() => setSelectedId(id.toString())}
       />
     </>
   )

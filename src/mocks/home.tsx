@@ -19,10 +19,11 @@ export const homepage = {
 
 export const projects = [
   {
+    id: 1,
     title: "Portfolio",
     description:
       "This site is built in Next.js 13 and uses a library named powerglitch for glitch animations",
-    imageURL: home,
+    imageURL: "/Home.png",
     link: "https://github.com/ssluizf/Portfolio",
     links: [
       {
@@ -37,10 +38,11 @@ export const projects = [
     skills: ["React", "Next.js"],
   },
   {
+    id: 2,
     title: "Projeto Artificium",
     description:
       "Site built in Next.js 13 for studies over techs as Cypress and Storybook",
-    imageURL: login,
+    imageURL: "/Login.png",
     link: "https://github.com/ssluizf/Artificium",
     links: [
       {

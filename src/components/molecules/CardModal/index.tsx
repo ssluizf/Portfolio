@@ -1,20 +1,26 @@
-import Glitch from "@/components/atoms/Glitch"
-import Icon from "@/components/atoms/Icon"
+"use client"
 
 import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 
+import { AnimatePresence, motion } from "framer-motion"
+
+import Glitch from "@/components/atoms/Glitch"
+import Icon from "@/components/atoms/Icon"
+
 type CardModalProps = {
+  layoutId?: string
   open: boolean
   onClose: () => void
   title: string
   description: string
-  imageURL?: StaticImageData | string
+  imageURL?: string
   links?: { label: string; link: string }[]
   skills?: string[]
 }
 
 export default function CardModal({
+  layoutId,
   open,
   onClose,
   title,
@@ -23,77 +29,89 @@ export default function CardModal({
   links = [],
   skills = [],
 }: CardModalProps) {
-  return open ? (
-    <div
-      onClick={onClose}
-      className="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-50 z-20"
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="absolute top-0 bottom-0 left-0 right-0 mx-auto my-auto w-6/12 h-min"
-      >
-        <Glitch>
-          <button
-            onClick={onClose}
-            className="bg-black rounded-full p-3 -m-4 absolute top-0 right-0 text-white hover:text-green"
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          onClick={onClose}
+          className="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-50 z-20"
+        >
+          <motion.div
+            layoutId={layoutId}
+            onClick={(e) => e.stopPropagation()}
+            className="absolute top-0 bottom-0 left-0 right-0 mx-auto my-auto w-6/12 h-min"
           >
-            <Icon name="close" className="h-5 w-5 md:h-5 md:w-5" />
-          </button>
-        </Glitch>
-        <div className="h-min grid grid-flow-row auto-rows-min gap-4 overflow-hidden bg-black rounded-lg pb-8">
-          <div className="flex">
-            <Image
-              className="w-2/3 bg-dark-gray h-72 object-cover object-top"
-              alt="Card Image"
-              src={imageURL}
-            />
-            <div className="w-1/3 p-4 pt-12 space-y-3">
-              {links.map(({ label, link }, index) => (
-                <Link
-                  key={`link-${index}`}
-                  className="flex justify-between gap-2 bg-black rounded-full p-0 text-white hover:text-green"
-                  href={link}
-                  target="_blank"
-                >
-                  <p className="font-medium text-sm md:text-base">{label}</p>
-                  <Icon name="arrowRight" className="h-6 w-6 md:h-6 md:w-6" />
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="w-2/3 pl-6 space-y-6">
-            <div className="space-y-3">
-              <p className="text-white font-medium text-md md:text-xl">
-                {title}
-              </p>
-              <p className="text-white text-xs md:text-base">{description}</p>
-            </div>
-            {skills.length > 0 && (
-              <div className="space-y-3">
-                <p className="text-white font-medium text-md md:text-xl">
-                  Skills
-                </p>
-                <div className="flex space-x-2">
-                  {skills.map((skill, index) => (
-                    <div
-                      key={`skill-${index}`}
-                      className="flex items-center space-x-1"
+            <Glitch>
+              <motion.button
+                onClick={onClose}
+                className="bg-black rounded-full p-3 -m-4 absolute top-0 right-0 text-white hover:text-green"
+              >
+                <Icon name="close" className="h-5 w-5 md:h-5 md:w-5" />
+              </motion.button>
+            </Glitch>
+            <motion.div className="h-min grid grid-flow-row auto-rows-min gap-4 overflow-hidden bg-black rounded-lg pb-8">
+              <motion.div className="flex">
+                <motion.img
+                  className="w-2/3 bg-dark-gray h-72 object-cover object-top"
+                  alt="Card Image"
+                  src={imageURL}
+                />
+                <motion.div className="w-1/3 p-4 pt-12 space-y-3">
+                  {links.map(({ label, link }, index) => (
+                    <Link
+                      key={`link-${index}`}
+                      className="flex justify-between gap-2 bg-black rounded-full p-0 text-white hover:text-green"
+                      href={link}
+                      target="_blank"
                     >
+                      <motion.p className="font-medium text-sm md:text-base">
+                        {label}
+                      </motion.p>
                       <Icon
-                        name="star"
-                        className="text-white h-6 w-6 md:h-6 md:w-6"
+                        name="arrowRight"
+                        className="h-6 w-6 md:h-6 md:w-6"
                       />
-                      <p className="text-white text-xs md:text-base">{skill}</p>
-                    </div>
+                    </Link>
                   ))}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  ) : (
-    <></>
+                </motion.div>
+              </motion.div>
+              <motion.div className="w-2/3 pl-6 space-y-6">
+                <motion.div className="space-y-3">
+                  <motion.p className="text-white font-medium text-md md:text-xl">
+                    {title}
+                  </motion.p>
+                  <motion.p className="text-white text-xs md:text-base">
+                    {description}
+                  </motion.p>
+                </motion.div>
+                {skills.length > 0 && (
+                  <motion.div className="space-y-3">
+                    <motion.p className="text-white font-medium text-md md:text-xl">
+                      Skills
+                    </motion.p>
+                    <motion.div className="flex space-x-2">
+                      {skills.map((skill, index) => (
+                        <motion.div
+                          key={`skill-${index}`}
+                          className="flex items-center space-x-1"
+                        >
+                          <Icon
+                            name="star"
+                            className="text-white h-6 w-6 md:h-6 md:w-6"
+                          />
+                          <motion.p className="text-white text-xs md:text-base">
+                            {skill}
+                          </motion.p>
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  </motion.div>
+                )}
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
