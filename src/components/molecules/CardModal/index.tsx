@@ -49,11 +49,19 @@ export default function CardModal({
             </Glitch>
             <motion.div className="h-min grid grid-flow-row auto-rows-min gap-4 overflow-hidden bg-black rounded-lg pb-8">
               <motion.div className="flex">
-                <motion.img
-                  className="w-2/3 bg-dark-gray h-72 object-cover object-top"
-                  alt="Card Image"
-                  src={imageURL}
-                />
+                <motion.div className="w-2/3 h-72">
+                  <motion.img
+                    className="absolute w-2/3 bg-dark-gray h-72 object-cover object-top z-50 rounded-tl-lg hover:rounded-none"
+                    alt="Card Image"
+                    src={imageURL}
+                    whileHover={{
+                      y: -25,
+                      x: -25,
+                      scale: 1.025,
+                      transition: { duration: 0.15 },
+                    }}
+                  />
+                </motion.div>
                 <motion.div className="w-1/3 p-4 pt-12 space-y-3">
                   {links.map(({ label, link }, index) => (
                     <Link
