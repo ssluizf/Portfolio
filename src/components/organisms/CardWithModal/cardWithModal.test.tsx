@@ -10,6 +10,7 @@ describe("CardWithModal", () => {
   it("should render", () => {
     render(
       <CardWithModal
+        id={1}
         title="Test Title"
         description="Test Description"
         links={[]}

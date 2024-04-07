@@ -1,8 +1,6 @@
 "use client"
 
-import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-
 import { motion } from "framer-motion"
 
 import Glitch from "@/components/atoms/Glitch";
