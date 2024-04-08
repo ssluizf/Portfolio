@@ -58,7 +58,7 @@ export default function CardModal({
                       y: -25,
                       x: -25,
                       scale: 1.025,
-                      transition: { duration: 0.15 },
+                      transition: { delay: 0.2, duration: 0.15 },
                     }}
                   />
                 </motion.div>
