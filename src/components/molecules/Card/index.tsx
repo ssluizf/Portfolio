@@ -17,7 +17,7 @@ type CardProps = {
 
 export default function Card({ layoutId, title, description, onClick, imageURL = "", link = "" }: CardProps) {
   return (
-    <motion.div layoutId={layoutId} className="relative">
+    <motion.div layoutId={layoutId} className="relative max-w-md">
       <Glitch>
         <Link
           className="bg-black rounded-full p-2 -m-4 absolute top-0 right-0 text-white hover:text-green -rotate-45"

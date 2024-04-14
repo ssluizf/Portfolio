@@ -1,11 +1,12 @@
 import Link from "next/link"
 
-import { homepage, projects } from "@/mocks/home"
+import { homepage, projects, skills } from "@/mocks/home"
 
 import Icon from "@/components/atoms/Icon"
 import Glitch from "@/components/atoms/Glitch"
 import BinaryLayer from "@/components/molecules/BinaryLayer"
 import CardWithModal from "@/components/organisms/CardWithModal"
+import Terminal from "@/components/atoms/Terminal"
 
 export default function Home() {
   const {
@@ -82,7 +83,7 @@ export default function Home() {
       <div className="h-[25vh] overflow-hidden bg-dark-gray">
         <BinaryLayer color="dark-green" />
       </div>
-      <div className="relative h-screen bg-dark-gray lg:snap-start">
+      <div className="relative lg:h-screen bg-dark-gray lg:snap-start">
         <div className="flex w-full absolute z-0 text-dark-green text-4xl leading-none break-all select-none">
           <p className="hidden xs:inline ml-10">
             <span>11</span>
@@ -125,13 +126,13 @@ export default function Home() {
           </p>
         </div>
         <div
-          className="flex flex-col container mx-auto px-8 md:px-28 py-8"
+          className="flex flex-col container mx-auto px-8 md:px-14 lg:px-28 py-8"
           id="case-studies"
         >
-          <p className="text-white font-medium text-2xl md:text-5xl w-min pb-8 md:pb-16 whitespace-nowrap z-10">
+          <p className="text-white font-medium w-min text-3xl pb-8 md:text-5xl md:pb-16 lg:mx-0 whitespace-nowrap z-10">
             {caseStudiesTitle}
           </p>
-          <div className="h-auto grid grid-rows-1 grid-cols-1 lg:h-3/5 lg:grid-cols-2 xl:grid-cols-3 gap-12">
+          <div className="h-auto grid grid-rows-1 grid-cols-1 lg:h-3/5 lg:grid-cols-2 2xl:grid-cols-3 gap-12">
             {projects.map((project, index) => (
               <CardWithModal key={`card-${index}`} {...project} />
             ))}
@@ -139,38 +140,14 @@ export default function Home() {
         </div>
       </div>
       <div className="bg-gradient-to-b from-dark-gray to-black h-screen lg:snap-start">
-        <div id="skills" className="flex flex-col h-full items-center container mx-auto px-8 md:px-28 py-8">
-          <p className="text-white font-medium text-2xl md:text-5xl w-min pb-8 md:pb-16 whitespace-nowrap z-10">
+        <div id="skills" className="flex flex-col h-full items-center container mx-auto px-8 md:px-14 lg:px-28 py-8">
+          <p className="text-white font-medium text-3xl md:text-5xl w-min pb-8 md:pb-16 whitespace-nowrap z-10">
             Skills
           </p>
-          <div className="w-1/2 rounded-xl">
-            <div className="flex items-center px-4 space-x-2 bg-white bg-opacity-20 h-8 rounded-t-xl">
-              <div className="bg-white w-3 h-3 rounded-full"></div>
-              <div className="bg-green w-3 h-3 rounded-full"></div>
-              <div className="bg-dark-green w-3 h-3 rounded-full"></div>
-            </div>
-            <div className="bg-dark-gray h-96 p-8 space-y-4 rounded-xl">
-              <p className="w-min whitespace-nowrap text-white hover:text-green cursor-pointer select-none">
-                <span className="text-3xl">{"> "}</span>
-                <span className="text-2xl">React</span>
-              </p>
-              <p className="w-min whitespace-nowrap text-white hover:text-green cursor-pointer select-none">
-                <span className="text-3xl">{"> "}</span>
-                <span className="text-2xl">Next.js</span>
-              </p>
-              <p className="w-min whitespace-nowrap text-white hover:text-green cursor-pointer select-none">
-                <span className="text-3xl">{"> "}</span>
-                <span className="text-2xl">Typescript</span>
-              </p>
-              <p className="w-min whitespace-nowrap text-white hover:text-green cursor-pointer select-none">
-                <span className="text-3xl">{"> "}</span>
-                <span className="text-2xl">Vitest</span>
-              </p>
-            </div>
-          </div>
+          <Terminal skills={skills} />
         </div>
       </div>
-      <div className="grid gap-y-4 md:grid-cols-3 auto-rows-auto md:h-72 container bg-black mx-auto px-8 md:px-28 pt-8 pb-6 bottom-0 lg:snap-end">
+      <div className="grid gap-y-4 md:grid-cols-3 auto-rows-auto md:h-72 container bg-black mx-auto px-8 md:px-14 lg:px-28 pt-8 pb-6 bottom-0 lg:snap-end">
         <div className="grid h-min gap-4">
           <p className="text-dark-green font-bold">{menuTitle}</p>
           <Link className="w-min" href="/">

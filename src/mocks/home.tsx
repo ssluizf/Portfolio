@@ -61,3 +61,5 @@ export const projects = [
     skills: ["React", "Next.js", "Firebase"],
   },
 ]
+
+export const skills = ["React", "Next", "Typescript", "Vitest"]
